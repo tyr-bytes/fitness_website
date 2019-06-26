@@ -1,0 +1,136 @@
+<% include ./partials/header.ejs %>
+      <ul class = "nav navbar-nav">
+          <li><a href = "/home/">Home</a></li>
+          <li class = "active"><a href ="/diet/">Eat</a></li>
+          <li><a href ="/work/">Work</a></li>
+          <li><a href ="/study/">Study</a></li>
+      </ul>
+  </div>
+</nav>        
+
+<!-- jumbotron -->
+<div class="container">
+  <div class="jumbotron">
+      <h1><span class="glyphicon glyphicon-scale" aria-hidden="true"></span>The Power Of Diet</h1>    
+</div> <!--  jumbo -->
+
+<div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading panel-heading-custom">
+          <h3 class ="panel-title">Get Your TDEE</h3>
+      </div>
+
+      <div class="panel-body">
+              <form class="form-horizontal" action = "/tdee" method = "GET">
+                      <fieldset>                                
+                      <!-- Multiple Radios (inline) -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="radios">Gender</label>
+                        <div class="col-md-4"> 
+                          <label class="radio-inline" for="radios-0">
+                            <input type="radio" name="gender" id="radios-0" value="Male" checked="checked">
+                            Male
+                          </label> 
+                          <label class="radio-inline" for="radios-1">
+                            <input type="radio" name="gender" id="radios-1" value="Female">
+                            Female
+                          </label>
+                        </div>
+                      </div>
+                      
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Age</label>  
+                        <div class="col-md-4">
+                        <input id="textinput" name="userAge" type="number" placeholder="Enter Your Age Here" class="form-control input-md" required="">
+                        <span class="help-block">(in years)</span>  
+                        </div>
+                      </div>
+                      
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Height</label>  
+                        <div class="col-md-4">
+                        <input id="textinput" name="userHeight" type="number" placeholder="Enter your Height Here" class="form-control input-md" required="">
+                        <span class="help-block">(in inches)</span>  
+                        </div>
+                      </div>
+                      
+                      <!-- Text input-->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="textinput">Weight</label>  
+                        <div class="col-md-4">
+                        <input id="textinput" name="userWeight" type="number" placeholder="Enter your Weight Here" class="form-control input-md" required="">
+                        <span class="help-block">(in lbs)</span>  
+                        </div>
+                      </div>
+                      
+                      <!-- Select Basic -->
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" for="activity">Activity Level</label>
+                        <div class="col-md-4">
+                          <select id="activity" name="activity" class="form-control">
+                            <option value="1.2">Sedentary</option>
+                            <option value="1.375">Lightly active</option>
+                            <option value="1.55">Moderately active</option>
+                            <option value="1.725">Very active</option>
+                            <option value="1.9">Extra active</option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                              <label class="col-md-4 control-label" for="submit"></label>
+                              <div class="col-md-4">
+                                <button id="submit" class="btn btn-success">Submit</button>
+                              </div>
+                            </div>
+                      </fieldset>
+                  </form>
+                      
+      </div>
+</div>
+<div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading panel-heading-custom">
+          <h3 class ="panel-title">How TDEE Is Calculated</h3>
+      </div>
+
+      <div class="panel-body">
+          <p>TDEE is short for <strong>Total Daily Energy Expenditure.</strong></p>
+          <p>
+              This is the amount of calories your body burns in a 24 hour period, sleeping, working, exercising, playing and even digesting food!
+              This calculator is designed to give you your estiamted TDEE based on a few key factors:
+              <ul class="list-group">
+                  <li class="list-group-item">Gender</li>
+                  <li class="list-group-item">Age</li>
+                  <li class="list-group-item">Weight</li>
+                  <li class="list-group-item">Height</li>
+                  <li class="list-group-item">Activity Level</li>
+                </ul>
+          </p>
+        
+      </div>
+</div>
+
+<div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading panel-heading-custom">
+          <h3 class ="panel-title">Activity Level</h3>
+      </div>
+
+      <div class="panel-body">
+       
+          <ul class="list-group">
+                  <li class="list-group-item">1.2: If you are sedentary (little or no exercise)
+                  <li class="list-group-item">1.375: If you are lightly active (light exercise/sports 1-3 days/week)
+                  <li class="list-group-item">1.55: If you are moderately active (moderate exercise/sports 3-5 days/week)
+                  <li class="list-group-item">1.725: If you are very active (hard exercise/sports 6-7 days a week) 
+                  <li class="list-group-item">1.9: If you are extra active (very hard exercise/sports & physical job or 2x training) 
+
+          </ul>
+          
+      </div>
+</div>
+
+<% include ./partials/footer.ejs %>

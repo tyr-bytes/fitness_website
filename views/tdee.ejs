@@ -1,0 +1,113 @@
+<% include ./partials/header.ejs %>
+                <ul class = "nav navbar-nav">
+                    <li><a href = "/home/">Home</a></li>
+                    <li class = "active"><a href ="/diet/">Eat</a></li>
+                    <li><a href ="/work/">Work</a></li>
+                    <li><a href ="/study/">Study</a></li>
+                </ul>
+            </div>
+        </nav>        
+        
+        <!-- jumbotron -->
+        <div class="container">
+            <div class="jumbotron">
+                <h1><span class="glyphicon glyphicon-scale" aria-hidden="true"></span>The Power Of Diet</h1>    
+        </div> <!--  jumbo -->
+
+        <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading panel-heading-custom">
+                    <h3 class ="panel-title">Your RMR and TDEE is:</h3>
+                </div>
+                
+                <div class="panel-body">
+                  <% let genderLevel = (mystuff.gender === "Male") ? 5 : -161; %>
+                  <% const lbsToKG = 2.20462; %>
+                  <% const inchToCM = 2.54; %>
+                  
+                  <% let RMR = 9.99 * mystuff.userWeight / lbsToKG  + 6.25 * mystuff.userHeight * inchToCM - 4.92 * mystuff. userAge + genderLevel %>
+                  <% let TDEE = RMR * mystuff.activity %>
+                  <h3>RMR: <span id = "vitalstat"><%= RMR.toFixed(0) %></span> calories per day.</h3>
+                  <h3>TDEE: <span id = "vitalstat"><%= TDEE.toFixed(0) %></span> calories per day.</h3>
+                  <% let loseIt = TDEE - 500 %>
+                  <% let gainIt = TDEE + 500 %>
+                  <% let adjusted = "False" %>
+                  <% if (mystuff.gender === "Male" && loseIt < 1500){loseIt = 1500; adjusted = "True";}%>
+                  <% if (mystuff.gender === "Female" && loseIt < 1200){ loseIt = 1200; adjusted = "True";} %>
+                  <h3>To lose 1LB a week, eat: <span id = "vitalstat"><%= loseIt.toFixed(0) %></span> calories per day.</h3>
+                  <h3>To gain 1LB a week, eat: <span id = "vitalstat"><%= gainIt.toFixed(0) %></span> calories per day.</h3>
+                  
+                  <% if (adjusted === "True"){ %>
+                    <h3 class = "bad">Warning: Going below 1500 calories as a Male and 1200 calories as a Female is not recommended.
+                    Please consult with a dietician before undergoing.</h3>
+                    <% } %>
+                  <p><div class = "citation">Note: the calculator makes the assumption that 3500 calories/ week = 1LB.</div> 
+                    </p>
+                </div>
+        </div>
+        <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading panel-heading-custom">
+                    <h3 class ="panel-title">How TDEE Is Calculated</h3>
+                </div>
+
+                <div class="panel-body">
+                    <p>TDEE is short for <strong>Total Daily Energy Expenditure.</strong></p>
+                    <p>
+                        This is the amount of calories your body burns in a 24 hour period, sleeping, working, exercising, playing and even digesting food!
+                        This calculator is designed to give you your exact TDEE based on a few key factors:
+                        <ul class="list-group">
+                            <li class="list-group-item">Gender</li>
+                            <li class="list-group-item">Age</li>
+                            <li class="list-group-item">Weight</li>
+                            <li class="list-group-item">Height</li>
+                            <li class="list-group-item">Activity Level</li>
+                          </ul>
+                    </p>   
+                </div>
+        </div>
+
+        <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading panel-heading-custom">
+                    <h3 class ="panel-title">Calculator Assumptions, RMR, and Activity Level</h3>
+                </div>
+
+                <div class="panel-body">
+                    <p> The calculator itself is based on the Mifflin St. Jeor formula.  This formula determines your RMR, or resting metabolic rate.
+                    This is the amount of calories your body burns <em>at rest</em>, which is different than your TDEE (Total Daily Energy Expenditure).</p>
+                    <p> This formula is different for men and women. The formula is as follows:</p>    
+                    <ul class="list-group">
+                            <li class="list-group-item"><strong>Men</strong> - 9.99 x weight (kg) + 6.25 x height (cm) – 4.92 x age (y) + 5</li>
+                            <li class="list-group-item"><strong>Women</strong> - 9.99 x weight (kg) + 6.25 x height (cm) – 4.92 x age (y) – 161</li>
+                    </ul>
+                    
+                    <p><div class = "citation">Source: Mifflin, M. D., S. T. St Jeor, et al. (1990). "A new predictive equation for resting energy expenditure
+                            in healthy individuals." Am J Clin Nutr 51(2): 24 1-247</p></div>
+                            
+                    <p>Then the calculator will use your RMR and multiply it by your Basic Activity Factor.  This factor is a number that adjusts your RMR
+                        by the amount of daily acitivty you typically use.  For example, a couch potato will use 1.2 for their activity level, but an athlete will use something like 1.9.
+                    </p>
+
+                    <ul class="list-group">
+                            <li class="list-group-item">1.2: If you are sedentary (little or no exercise)
+                            <li class="list-group-item">1.375: If you are lightly active (light exercise/sports 1-3 days/week)
+                            <li class="list-group-item">1.55: If you are moderately active (moderate exercise/sports 3-5 days/week)
+                            <li class="list-group-item">1.725: If you are very active (hard exercise/sports 6-7 days a week) 
+                            <li class="list-group-item">1.9: If you are extra active (very hard exercise/sports & physical job or 2x training) 
+                    </ul>
+                    
+                    <p><div class = "citation">Source: <a href = "files/Estimating Energy Expenditure.pdf">Estimating Energy Expenditure</a> (click to download)</div></p>
+
+                    <p>
+                         The Mifflin-St Jeor equation is an ESTIMATE and although it is more likely to estimate RMR within 10% of that measured, it can produce errors.
+                         These numbers are based on ADULTS. Further, these numbers may be off for for people who are extremely overweight, or extremely old, or extremely young.
+                         The <strong>BEST</strong> way to get the most accurate result is to monitor your calories,  track your weight, but also measure your body.
+                         Consistency is always better than rapid results.
+                    </p>
+                    
+                    
+                </div>
+        </div>
+        
+<% include ./partials/footer.ejs %>

@@ -1,0 +1,82 @@
+body, html{
+    height: 100%;
+}
+
+body {
+    padding-top: 70px;
+    background: #222629;
+}
+
+.jumbotron {
+    color: #86C232;
+    background: #222629;
+}
+
+.navbar-inverse {
+    background: #474b4f;
+}
+
+.navbar-inverse .navbar-brand{
+    color: #86C232;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: white;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover {
+    background-color: #61892F;
+}
+
+.glyphicon {
+    padding-right: 20px;
+}
+
+.panel-body{
+    background: #222629;
+    color: white;
+
+}
+
+.panel panel-title{
+    background: #86C232
+}
+
+.panel-default .panel-heading-custom {
+    background-color: #61892F;
+    border-color: #ddd;
+    color:white;
+}
+
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+.carousel-indicators li {
+    background-color: #474B4F;
+}
+.carousel-indicators .active {
+    background-color: #86C232;
+}
+
+.list-group-item{
+    background-color: #474B4F;
+}
+
+.citation{
+    color: #474B4F;
+}
+
+#vitalstat{
+    color: #86C232;
+}
+
+.bad {
+    color: red;
+}
+
+@media (max-width: 1023px) {
+.nav-collapse {
+    overflow-y: auto;
+}
+}
